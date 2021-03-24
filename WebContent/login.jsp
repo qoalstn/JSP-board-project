@@ -57,5 +57,3 @@ pageEncoding="UTF-8"%>
 	
 </body>
 </html>
-
-<%--https://www.youtube.com/watch?v=MtxFWczSFqU&list=PLRx0vPvlEmdAZv_okJzox5wj2gG_fNh_6&index=2 --%>

@@ -15,7 +15,7 @@ public class UserDAO {
 		try {
 			String dbURL = "jdbc:mysql://database-1.cs870qgd0hjd.us-east-2.rds.amazonaws.com:3306/management";
 			String dbID = "admin";
-			String dbPassword = "admin";
+			String dbPassword = "admin7372";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
@@ -41,5 +41,20 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 		return -2; //DB¿À·ù
+	}
+	public int join (User user) {
+		String SQL = "INSERT INTO USER (userID, Password, Name, Gender, Email) VALUES (?,?,?,?,?)";
+		try {
+			pstmt = con.prepareStatement(SQL);
+			pstmt.setString(1, user.getuserID());
+			pstmt.setString(2, user.getPassword());
+			pstmt.setString(3, user.getName());
+			pstmt.setString(4, user.getGender());
+			pstmt.setString(5, user.getEmail());
+			return pstmt.executeUpdate();
+		} catch (Exception e) {
+			e.printStackTrace();
+			 return -1;
+		}
 	}
 }
