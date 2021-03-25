@@ -19,54 +19,81 @@
 		userID = (String) session.getAttribute("userID");
 	}
 	%>
-	
-	
-	
-	<nav class="navbar navbar-default"><%--navigation태그, 메뉴를 만들때 주로 쓰인다. --%>
-	<div class="navbar-header"> <%--로고를 담는 부분 --%>
-		<a href="https://www.naver.com">NAVER</a>
-		<a class="navbar-brand" href="main.jsp">JSP로 웹사이트 만들기</a>
+
+
+
+	<nav class="navbar navbar-default">
+		<%--navigation태그, 메뉴를 만들때 주로 쓰인다. --%>
+		<div class="navbar-header">
+			<%--로고를 담는 부분 --%>
+			<a href="https://www.naver.com">NAVER</a> <a class="navbar-brand"
+				href="main.jsp">JSP로 웹사이트 만들기</a>
 			<!-- <button type="button" data-target="#bs-example-navbar-collpse-1"
 			aria-expanded="false">버튼</button> -->
-	</div>
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+		</div>
+		<div class="collapse navbar-collapse"
+			id="bs-example-navbar-collapse-1">
 			<ul class="nav navbar-nav">
 				<li class="active"><a href="main.jsp">홈</a></li>
 				<li><a href="bbs.jsp">목록</a></li>
 			</ul>
 			<%
-			if(userID == null) {
+				if (userID == null) {
 			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">접속하기<span class="caret"></span></a>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">접속하기<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="login.jsp">로그인</a></li>
 						<li><a href="join.jsp">회원가입</a></li>
 					</ul>
 			</ul>
 			<%
-			} else {
+				} else {
 			%>
 			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown">
-					<a href="#" class="dropdown-toggle"
-						data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">회원관리<span class="caret"></span></a>
+				<li class="dropdown"><a href="#" class="dropdown-toggle"
+					data-toggle="dropdown" role="button" aria-haspopup="true"
+					aria-expanded="false">회원관리<span class="caret"></span></a>
 					<ul class="dropdown-menu">
 						<li><a href="logout.jsp">로그아웃</a></li>
 					</ul>
 			</ul>
 			<%
-			}
+				}
 			%>
-			</div>
-</nav>
- 
-<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-<script src="js/bootstrap.js"></script>
+		</div>
+	</nav>
+
+	<div class="container">
+		<table class="table table-striped"
+			style="text-align: center; boder: 1px solid #dddddd">
+			<thead>
+				<tr>
+					<th
+						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">번호</th>
+					<th
+						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">제목</th>
+					<th
+						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">작성자</th>
+					<th
+						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">작성일</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>1</td>
+					<td>홍길동</td>
+					<td>안녕하세요</td>
+					<td>03.26</td>
+				</tr>
+			</tbody>
+		</table>
+		<a href="write.jsp" class="btn btn-primary pull-right">글쓰기 </a>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="js/bootstrap.js"></script>
 
 </body>
 </html>
