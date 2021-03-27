@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ page import="java.io.PrintWriter"%>
+<%@ page import="bbs.Bbs"%>
+<%@ page import="bbs.BbsDAO"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -17,6 +19,33 @@
 		String userID = null;
 	if (session.getAttribute("userID") != null) {
 		userID = (String) session.getAttribute("userID");
+	}
+	if (userID == null) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('로그인 후 이용이 가능합니다.')");
+		script.println("location.href = 'login.jsp'");
+		script.println("</script>");
+	}
+
+	int id = 0;
+	if (request.getParameter("id") != null) {
+		id = Integer.parseInt(request.getParameter("id"));
+	}
+	if (id == 0 ) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('유효하지 않은 글입니다.')");
+		script.println("location.href = 'bbs.jsp'");
+		script.println("</script>");
+	}
+	Bbs bbs = new BbsDAO().getBbs(id);
+	if (!userID.equals(bbs.getUserID())) {
+		PrintWriter script = response.getWriter();
+		script.println("<script>");
+		script.println("alert('권한이 없는 계정입니다.')");
+		script.println("location.href = 'bbs.jsp'");
+		script.println("</script>");
 	}
 	%>
 
@@ -37,21 +66,7 @@
 				<li class="active"><a href="main.jsp">홈</a></li>
 				<li><a href="bbs.jsp">목록</a></li>
 			</ul>
-			<%
-				if (userID == null) {
-			%>
-			<ul class="nav navbar-nav navbar-right">
-				<li class="dropdown"><a href="#" class="dropdown-toggle"
-					data-toggle="dropdown" role="button" aria-haspopup="true"
-					aria-expanded="false">접속하기<span class="caret"></span></a>
-					<ul class="dropdown-menu">
-						<li><a href="login.jsp">로그인</a></li>
-						<li><a href="join.jsp">회원가입</a></li>
-					</ul>
-			</ul>
-			<%
-				} else {
-			%>
+
 			<ul class="nav navbar-nav navbar-right">
 				<li class="dropdown"><a href="#" class="dropdown-toggle"
 					data-toggle="dropdown" role="button" aria-haspopup="true"
@@ -60,15 +75,13 @@
 						<li><a href="logout.jsp">로그아웃</a></li>
 					</ul>
 			</ul>
-			<%
-				}
-			%>
+
 		</div>
 	</nav>
 
 	<div class="container">
 		<div class="row">
-			<form method="post" action="writeAction.jsp">
+			<form method="post" action="updateAction.jsp?id=<%=id%>">
 				<table class="table table-striped"
 					style="text-align: center; boder: 1px solid #dddddd;">
 					<thead>
@@ -81,17 +94,16 @@
 					<tbody>
 						<tr>
 							<td><input type="text" class="form-control"
-								placeholder="글 제목" name="bbsTitle" maxlength="50"></td>
+								placeholder="글 제목" name="bbsTitle" maxlength="50" value="<%= bbs.getBbsTitle() %>"></td>
 						</tr>
 						<tr>
 							<td><textarea class="form-control" placeholder="글 내용"
-									name="bbsContent" maxlength="2048" style="height: 350px"></textarea></td>
+									name="bbsContent" maxlength="2048" style="height: 350px"><%= bbs.getBbsContent() %></textarea></td>
 						</tr>
 					</tbody>
 
 				</table>
-				<input type="submit" class="btn btn-primary pull-right"
-					value="등록">
+				<input type="submit" class="btn btn-primary pull-right" value="수정완료">
 			</form>
 		</div>
 	</div>

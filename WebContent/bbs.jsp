@@ -15,6 +15,12 @@
 <link rel="stylesheet" href="css/bootstrap.css">
 <%--rel은 link태그의 필수 속성.속성값"스타일시트"로 사용할 외부 리소스 "css/bootstrap.css"를 불러온다. --%>
 <title>JSP로 웹사이트 만들기</title>
+<style type="text/css">
+	a, a:hover{
+		color: #000000;
+		text-decoration: none;
+	}
+</style>
 </head>
 <body>
 	<%
@@ -97,11 +103,12 @@
 				%>
 				<tr>
 					<td><%=list.get(i).getId()%></td>
-					<td><a href="view.jsp?bbsID=<%=list.get(i).getId()%>"> <%=list.get(i).getBbsTitle()%>
+					<td><a href="view.jsp?id=<%=list.get(i).getId()%>"> <%=list.get(i).getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n",
+		"<br>")%>
 					</a></td>
-					<td><%=list.get(i).getId()%></td>
+					<td><%=list.get(i).getUserID()%></td>
 					<td><%=list.get(i).getBbsDate().substring(0, 11) + list.get(i).getBbsDate().substring(11, 13) + "시"
-		+ list.get(i).getBbsDate().substring(14, 16) + "분" %></td>
+		+ list.get(i).getBbsDate().substring(14, 16) + "분"%></td>
 				</tr>
 				<%
 					}
@@ -109,6 +116,20 @@
 
 			</tbody>
 		</table>
+		<%
+			if (pageNumber != 1) {
+		%>
+		<a href="bbs.jsp?pageNumber=<%=pageNumber - 1%>"
+			class="btn btn-success btn-arrow-left">이전</a>
+		<%
+			}
+		if (bbsDAO.nextPage(pageNumber + 1)) {
+		%>
+		<a href="bbs.jsp?pageNumber=<%=pageNumber + 1%>"
+			class="btn btn-success btn-arrow-right">다음</a>
+		<%
+			}
+		%>
 		<a href="write.jsp" class="btn btn-primary pull-right">글쓰기 </a>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
