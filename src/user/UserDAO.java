@@ -13,9 +13,9 @@ public class UserDAO {
 	
 	public UserDAO() {
 		try {
-			String dbURL = "jdbc:mysql://database-1.cs870qgd0hjd.us-east-2.rds.amazonaws.com:3306/management";
-			String dbID = "admin";
-			String dbPassword = "admin7372";
+			String dbURL = "***";
+			String dbID = "***";
+			String dbPassword = "***";
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			con = DriverManager.getConnection(dbURL, dbID, dbPassword);
 		} catch (Exception e) {
