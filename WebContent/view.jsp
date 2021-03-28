@@ -37,11 +37,11 @@
 
 
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<%--navigation태그, 메뉴를 만들때 주로 쓰인다. --%>
 		<div class="navbar-header">
 			<%--로고를 담는 부분 --%>
-			<a href="https://www.naver.com">NAVER</a> <a class="navbar-brand"
+			<a class="navbar-brand"
 				href="main.jsp">JSP로 웹사이트 만들기</a>
 			<!-- <button type="button" data-target="#bs-example-navbar-collpse-1"
 			aria-expanded="false">버튼</button> -->
@@ -81,7 +81,7 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" style="padding: 100px 0px 0px 0px">
 		<div class="row">
 			<table class="table table-striped"
 				style="text-align: center; boder: 1px solid #dddddd;">

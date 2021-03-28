@@ -9,8 +9,18 @@
 <meta name="viewport" content="width=device-width" initial-scale="1">
 <%--viweport는 아이폰에서 페이지를 표시할 때 사용, 뷰포트의 너비는 기기에 맞춰서, 초기 배율은 100%--%>
 <link rel="stylesheet" href="css/bootstrap.css">
+<link rel="stylesheet" href="css/Custom.css">
 <%--rel은 link태그의 필수 속성.속성값"스타일시트"로 사용할 외부 리소스 "css/bootstrap.css"를 불러온다. --%>
 <title>JSP로 웹사이트 만들기</title>
+<style type="text/css">
+nav {
+	position: sticky;
+	top: 0;
+	/* width: 100% */
+	left: 0;
+	right: 0;
+}
+</style>
 </head>
 <body>
 	<%
@@ -22,12 +32,11 @@
 
 
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<%--navigation태그, 메뉴를 만들때 주로 쓰인다. --%>
 		<div class="navbar-header">
 			<%--로고를 담는 부분 --%>
-			<a href="https://www.naver.com">NAVER</a> <a class="navbar-brand"
-				href="main.jsp">JSP로 웹사이트 만들기</a>
+			<a class="navbar-brand" href="main.jsp">JSP로 웹사이트 만들기</a>
 			<!-- <button type="button" data-target="#bs-example-navbar-collpse-1"
 			aria-expanded="false">버튼</button> -->
 		</div>
@@ -66,31 +75,46 @@
 		</div>
 	</nav>
 
-	<div class="container">
-		<table class="table table-striped"
-			style="text-align: center; boder: 1px solid #dddddd">
-			<thead>
-				<tr>
-					<th
-						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">번호</th>
-					<th
-						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">제목</th>
-					<th
-						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">작성자</th>
-					<th
-						style="background-color: #eeeeee; text-align: center; boder: 1px solid #dddddd">작성일</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td>1</td>
-					<td>홍길동</td>
-					<td>안녕하세요</td>
-					<td>03.26</td>
-				</tr>
-			</tbody>
-		</table>
-		<a href="write.jsp" class="btn btn-primary pull-right">글쓰기 </a>
+	<div class="container"
+		style="text-align: center; width: 100%; padding: 0px;">
+		<div class="jumbotron">
+			<h1>JSP Website</h1>
+			<p>with bootstrap</p>
+			<p>
+				<a class="btn btn-primary btn-pull"
+					href="https://github.com/qoalstn" target="blank" role="button">more</a>
+			</p>
+		</div>
+		<div class="container "
+			style="padding: 0px; display: block; margin: 0px auto;">
+			<div id="myCarousel" class="carousel slide" data-ride="carousel">
+				<ol class="carousel-indicators">
+					<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+					<li data-target="#myCarousel" data-slide-to="1"></li>
+					<li data-target="#myCarousel" data-slide-to="2"></li>
+				</ol>
+				<div class="carousel-inner"
+					style="width: 1100px; height: 500px; margin: 0px; padding: 0px;">
+					<div class="item active">
+						<img src="images/1.jpg" style="width: 1100px; height: 500px;">
+					</div>
+					<div class="item">
+						<img src="images/2.jpg" style="width: 1100px; height: 500px;">
+					</div>
+					<div class="item">
+						<img src="images/3.jpg" style="width: 1100px; height: 500px;">
+					</div>
+					<a class="left carousel-control" href="#myCarousel"
+						data-slide="prev"> <span
+						class="glyphicon glyphicon-chevron-left"></span>
+					</a> <a class="right carousel-control" href="#myCarousel"
+						data-slide="next"> <span
+						class="glyphicon glyphicon-chevron-right"></span>
+					</a>
+				</div>
+
+			</div>
+		</div>
 	</div>
 	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 	<script src="js/bootstrap.js"></script>

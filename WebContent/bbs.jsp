@@ -16,10 +16,10 @@
 <%--rel은 link태그의 필수 속성.속성값"스타일시트"로 사용할 외부 리소스 "css/bootstrap.css"를 불러온다. --%>
 <title>JSP로 웹사이트 만들기</title>
 <style type="text/css">
-	a, a:hover{
-		color: #000000;
-		text-decoration: none;
-	}
+a, a:hover {
+	color: #000000;
+	text-decoration: none;
+}
 </style>
 </head>
 <body>
@@ -36,12 +36,11 @@
 
 
 
-	<nav class="navbar navbar-default">
+	<nav class="navbar navbar-default navbar-fixed-top">
 		<%--navigation태그, 메뉴를 만들때 주로 쓰인다. --%>
 		<div class="navbar-header">
 			<%--로고를 담는 부분 --%>
-			<a href="https://www.naver.com">NAVER</a> <a class="navbar-brand"
-				href="main.jsp">JSP로 웹사이트 만들기</a>
+			<a class="navbar-brand" href="main.jsp">JSP로 웹사이트 만들기</a>
 			<!-- <button type="button" data-target="#bs-example-navbar-collpse-1"
 			aria-expanded="false">버튼</button> -->
 		</div>
@@ -80,7 +79,7 @@
 		</div>
 	</nav>
 
-	<div class="container">
+	<div class="container" style="padding: 100px 0px 0px 0px">
 		<table class="table table-striped"
 			style="text-align: center; boder: 1px solid #dddddd">
 			<thead>
@@ -103,8 +102,8 @@
 				%>
 				<tr>
 					<td><%=list.get(i).getId()%></td>
-					<td><a href="view.jsp?id=<%=list.get(i).getId()%>"> <%=list.get(i).getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll("\n",
-		"<br>")%>
+					<td><a href="view.jsp?id=<%=list.get(i).getId()%>"> <%=list.get(i).getBbsTitle().replaceAll(" ", "&nbsp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;")
+		.replaceAll("\n", "<br>")%>
 					</a></td>
 					<td><%=list.get(i).getUserID()%></td>
 					<td><%=list.get(i).getBbsDate().substring(0, 11) + list.get(i).getBbsDate().substring(11, 13) + "시"
